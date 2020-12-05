@@ -4,12 +4,14 @@ The data of World Temperature come from Kaggle and as well as OpenSoft offers th
 With the databases, the information which it was obtained, will be used to create a fact table (called immigration_fact) and three tables of dimensions (called immigrant_dimension, demographic_dimension, and temperature_dimension), and Spark will be used for ETL jobs and store the outcomes in parquet.
 
 1.immigration_fact
+
     •id_immigration (float): identification number
     •type (string): condition of travel, business, vacation or study
     •visatype (string): country-specific visa type code
     •port_city (string): port
     
 2.immigrant_dimension
+
     •id_immigration (float): identification number
     •origin (string): country of origin
     •destination (string): destination country
@@ -25,6 +27,7 @@ With the databases, the information which it was obtained, will be used to creat
     •admission_number (double): admission number in the country
     
 3.demographic_dimension
+
     •city (string): city name
     •state (string): state name
     •median_age (float): average age
@@ -39,6 +42,7 @@ With the databases, the information which it was obtained, will be used to creat
     •count (float): count of immigrant entries to the US
     
 4.temperature_dimension
+
     •date (timestamp): date of the moment that this temperature was obtained
     •average_temperature (float): average temperature 
     •average_temperature_uncertainty (float): temperature uncertainty
@@ -59,12 +63,15 @@ Steps
 Conclusions
 This project was made with Spark because it is able to process a large amount of data and it can do so fast and so easy. Spark can also work with different kinds of formats and it was something necessary in this project due here it was used format as SAS, CSV, Parquet and theses kind of format can integrate very well with S3 and Redshift.
 The update of data will be each month because it is the reason more logical whether it is attended to the necessity of the table and, such the temperature data as immigration data and demographic data can be updated each month with new temperatures and new immigrants.
+
     •The data was increased by 100x.
     
 It can migrate to Elastic Map Reduce instance on Amazon Web Side and allow it to scale as needed.
+
     •The data populates a dashboard that must be updated on a daily basis by 7am every day.
     
 If this situation comes, it can use Airflow where will be programed and automatized the data pipeline jobs, and also it must have a retry mechanic in case something fails, the system can repeat the process.
 
     •The database needed to be accessed by 100+ people.
+
 In this case, it can use Redshift to have the data stored and so many people can access the information easily.
